@@ -6,6 +6,9 @@
 <p align="center"><b>Your models, in orbit.</b></p>
 <p align="center">A lightweight, one-container, self-hosted AI chat you can set up in minutes.<br>
 Free-model presets, voice and vision built in, private by default.</p>
+<p align="center">
+  <img src="docs/hero.gif" width="800" alt="Orrery's model picker: models grouped by provider, each with a short &quot;best for&quot; description, filtered by a search for coding">
+</p>
 
 ---
 
@@ -190,7 +193,7 @@ macOS and Linux: it checks Docker, asks for your key (hidden input), writes a lo
 picks a free port, starts Orrery and opens your browser. It also includes model presets and an
 illustrated setup guide for beginners.
 
-👉 **[Get the installer kit](<GUMROAD_URL>)** - buying it supports development. Orrery itself stays
+👉 **[Get the installer kit](https://yashpioneer7.gumroad.com/l/orrery)** - buying it supports development. Orrery itself stays
 free and open source.
 
 ## Security
