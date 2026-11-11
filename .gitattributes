@@ -1,0 +1,7 @@
+# Normalise line endings: LF in the repo and in checkouts (shell scripts break with CRLF).
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.svg text eol=lf
+*.png binary
+*.gif binary
+*.pdf binary

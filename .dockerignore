@@ -1,0 +1,23 @@
+# Keep secrets and junk out of the build context (the Dockerfile also copies an explicit allowlist).
+.env
+*.env
+.env.*
+*.local
+data/
+logs/
+*.log
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.vscode/
+.idea/
+.git/
+.github/
+.githooks/
+tests/
+docs/
+*.zip
+*.md
+!static/vendor/*.md

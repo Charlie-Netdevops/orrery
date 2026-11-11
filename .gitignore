@@ -1,0 +1,28 @@
+# Secrets - never commit these
+.env
+*.env
+!.env.example
+*.local
+.env.*
+!.env.example
+
+# Runtime data
+data/
+logs/
+*.log
+
+# Python / tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Archives
+*.zip

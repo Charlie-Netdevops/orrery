@@ -1,0 +1,29 @@
+#!/bin/sh
+# Orrery pre-commit hook - blocks any commit that contains a secret.
+# It runs gitleaks (official Docker image) on the files you are about to commit.
+#
+# Enable once per clone:   git config core.hooksPath .githooks
+# What happens on a hit:   the commit is refused and gitleaks shows file + line (value redacted).
+# False positive?          fix the line, or add the finding's fingerprint to .gitleaksignore.
+GITLEAKS_IMAGE="ghcr.io/gitleaks/gitleaks:v8.21.2"
+
+if ! command -v docker >/dev/null 2>&1 || ! docker info >/dev/null 2>&1; then
+  echo "pre-commit: Docker is not running, so the secret scan can't run. Commit blocked." >&2
+  echo "pre-commit: start Docker and try again." >&2
+  exit 1
+fi
+
+root=$(git rev-parse --show-toplevel) || exit 1
+# MSYS_NO_PATHCONV keeps Git Bash on Windows from rewriting the container paths.
+MSYS_NO_PATHCONV=1 docker run --rm \
+  -v "$root:/repo:ro" \
+  -e GIT_CONFIG_COUNT=1 -e GIT_CONFIG_KEY_0=safe.directory -e GIT_CONFIG_VALUE_0='*' \
+  "$GITLEAKS_IMAGE" git --pre-commit --staged --redact --no-banner -v /repo
+status=$?
+if [ $status -ne 0 ]; then
+  echo "" >&2
+  echo "pre-commit: gitleaks found a possible secret in your staged changes. Commit blocked." >&2
+  echo "pre-commit: remove it (and rotate the key if it was real) before committing." >&2
+  exit 1
+fi
+exit 0

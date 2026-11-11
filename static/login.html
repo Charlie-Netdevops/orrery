@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0c14">
+<meta name="referrer" content="no-referrer">
+<title>Log in · Orrery</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/app.css">
+<script src="/static/login.js" defer></script>
+</head>
+<body class="login-body">
+  <main class="login-card">
+    <img src="/static/logo.svg" alt="">
+    <h1>Orrery</h1>
+    <p class="tag">Your models, in orbit.</p>
+    <form id="loginForm" novalidate>
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required autofocus>
+      <p class="login-err" id="loginErr" role="alert" aria-live="assertive"></p>
+      <button type="submit" id="loginBtn">Log in</button>
+    </form>
+  </main>
+</body>
+</html>
